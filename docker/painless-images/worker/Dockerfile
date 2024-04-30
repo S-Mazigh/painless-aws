@@ -8,7 +8,6 @@ COPY --from=builder /painless/painless painless
 
 COPY --chown=ecs-user /docker/painless-images/worker/init_solver.sh /competition/init_solver.sh
 COPY --chown=ecs-user /docker/painless-images/worker/worker /competition/worker
-
 USER ecs-user
 RUN chmod +x /competition/init_solver.sh
 RUN chmod +x /competition/worker
