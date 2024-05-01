@@ -1,3 +1,4 @@
 *.log
 solver_out.json
 input.json
+combined_hostfile

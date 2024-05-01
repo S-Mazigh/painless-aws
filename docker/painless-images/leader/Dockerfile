@@ -7,10 +7,17 @@ WORKDIR /
 
 COPY --from=builder /painless/painless painless
 
-COPY --chown=ecs-user /docker/painless-images/leader/init_solver.sh /competition/init_solver.sh
-COPY --chown=ecs-user /docker/painless-images/leader/run_solver.sh /competition/run_solver.sh
-COPY --chown=ecs-user /docker/painless-images/leader/solver /competition/solver
+USER root
+
+# Needed sharer libraries
+RUN apt-get update && apt-get --install-recommends install -y libboost-all-dev protobuf-compiler
+
+COPY --chown=ecs-user leader/init_solver.sh /competition/init_solver.sh
+COPY --chown=ecs-user leader/run_solver.sh /competition/run_solver.sh
+COPY --chown=ecs-user leader/solver /competition/solver
+
 USER ecs-user
 RUN chmod +x /competition/init_solver.sh
 RUN chmod +x /competition/run_solver.sh
 RUN chmod +x /competition/solver
+
