@@ -5,6 +5,7 @@ import os
 import subprocess
 import sys
 import threading
+import time
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -97,10 +98,13 @@ if __name__ == "__main__":
     cmd = runner.get_command(input_json)
     
     print (f"cmd: {cmd}")
+    timeSpent = time.time()
     output = runner.run(cmd)
+    timeSpent = time.time() - timeSpent;
     result = MallobParser.get_result(output["stdout"])
     logging.info(f"RESULT: {result}")
     solver_output = {
+        "timespent": timeSpent,
         "return_code": result,
         "artifacts": {
             "stdout_path": output["stdout"],

@@ -4,7 +4,7 @@ This branch contains the files for my submissions to the SAT Competition 2024. S
 
     docker/painless-images/{common,leader,worker}/*
 
-The same Docker containers can be used for the parallel and cloud track. (In `run_solver.sh` the solver is configured differently based on the number of nodes involved.)
+The same Docker containers named `satcomp-painless`, can be used for the parallel (first instance) and cloud track. (In `run_solver.sh` the solver is configured differently based on the number of nodes involved.) 
 
 <hr/>
 <hr/>

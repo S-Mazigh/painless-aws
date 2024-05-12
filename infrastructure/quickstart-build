@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
      # run the create script
     cmd = ['python3', 'manage-solver-infrastructure.py', \
-        '--solver-type', 'parallel', \
+        '--solver-type', 'cloud', \
         '--mode', 'create'] \
         + profile_args + project_args
     logger.info(f"Creating the AWS infrastructure for project {args.project} using create-solver-project.")

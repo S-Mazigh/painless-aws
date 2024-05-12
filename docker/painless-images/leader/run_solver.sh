@@ -22,12 +22,10 @@ fi
 
 if [ $n_threads_per_process -le $MAX_N_SBVA ]; then
     n_sbva_per_process=1
-    nb_ls_after_sbva=0
+    n_ls_after_sbva=0
 fi
 
-pwd
-
-verbosity=0
+verbosity=1
 
 nglobalprocs=$(cat $1|wc -l)
 echo "Running Painless with $n_threads_per_process threads on $(hostname) as leader and with $nglobalprocs MPI processes in total"
@@ -39,7 +37,7 @@ if [[ $nglobalprocs -gt 1 ]]; then
     # hwthread --map-by ppr:$nglobalprocs:node:pe=$n_threads_per_process
     ls painless
     echo "CLOUD SETUP: "
-    command="mpirun --mca btl_tcp_if_include eth0 --allow-run-as-root --hostfile $1 --bind-to none ./painless -v=$verbosity -c=$nb_solvers -solver=k -t=1000 -shr-strat=1 -shr-sleep=100000 -dist -gshr-strat=2 -dist $2"
+    command="mpirun --mca btl_tcp_if_include eth0 --mca orte_abort_on_non_zero_status false --allow-run-as-root --hostfile $1 --bind-to none ./painless -v=$verbosity -c=$n_threads_per_process -solver=k -t=1000 -sbva-timeout=120 -shr-strat=1 -shr-sleep=100000 -gshr-strat=2 -dist $2"
 else
     # parallel setup
     echo "PARALLEL SETUP: "
