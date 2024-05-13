@@ -34,7 +34,7 @@ nb_solvers=$(($n_threads_per_process - 1))
 
 # parallel setup
 echo "PARALLEL SETUP: "
-command="./painless -v=$verbosity -c=$nb_solvers -t=5000 -shr-strat=4 -shr-sleep=100000 -sbva-count=$n_sbva_per_process -ls-after-sbva=$n_ls_after_sbva -sbva-timeout=1000 $2"
+command="./painless -v=$verbosity -c=$nb_solvers -t=5000 -shr-strat=3 -shr-sleep=100000 -sbva-count=$n_sbva_per_process -ls-after-sbva=$n_ls_after_sbva -sbva-timeout=1000 $2"
 
 echo "EXECUTING: $command"
 eval $command
