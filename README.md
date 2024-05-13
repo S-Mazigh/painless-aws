@@ -1,6 +1,6 @@
 ## Painless Submission 2024
 
-This branch contains the files of `PL-PRS-BVA-KISSAT-2Gr` submitted to the parallel track of SAT Competition 2024. See:
+This branch contains the files of `PL-PRS-BVA-KISSAT-MPI` submitted to the parallel track of SAT Competition 2024. See:
 
     docker/painless-images/{common,leader,worker}/*
 
