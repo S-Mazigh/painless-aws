@@ -32,17 +32,9 @@ echo "Running Painless with $n_threads_per_process threads on $(hostname) as lea
 
 nb_solvers=$(($n_threads_per_process - 1))
 
-if [[ $nglobalprocs -gt 1 ]]; then
-    # cloud setup
-    # hwthread --map-by ppr:$nglobalprocs:node:pe=$n_threads_per_process
-    ls painless
-    echo "CLOUD SETUP: "
-    command="mpirun --mca btl_tcp_if_include eth0 --mca orte_abort_on_non_zero_status false --allow-run-as-root --hostfile $1 --bind-to none ./painless -v=$verbosity -c=$n_threads_per_process -solver=k -t=1000 -sbva-timeout=120 -shr-strat=1 -shr-sleep=100000 -gshr-strat=2 -dist $2"
-else
-    # parallel setup
-    echo "PARALLEL SETUP: "
-    command="./painless -v=$verbosity -c=$nb_solvers -solver=k -t=5000 -shr-strat=4 -shr-sleep=100000 -sbva-count=$n_sbva_per_process -ls-after-sbva=$n_ls_after_sbva -sbva-timeout=1000 $2"
-fi
+# parallel setup
+echo "PARALLEL SETUP: "
+command="./painless -v=$verbosity -c=$nb_solvers -t=5000 -shr-strat=4 -shr-sleep=100000 -sbva-count=$n_sbva_per_process -ls-after-sbva=$n_ls_after_sbva -sbva-timeout=1000 $2"
 
 echo "EXECUTING: $command"
 eval $command

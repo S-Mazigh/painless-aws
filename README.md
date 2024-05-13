@@ -1,13 +1,14 @@
 ## Painless Submission 2024
 
-This branch contains the files for my submissions to the SAT Competition 2024. See:
+This branch contains the files of `PL-PRS-BVA-KISSAT` submitted to the parallel track of SAT Competition 2024. See:
 
     docker/painless-images/{common,leader,worker}/*
 
-The same Docker containers named `satcomp-painless`, can be used for the parallel (first instance) and cloud track. (In `run_solver.sh` the solver is configured differently based on the number of nodes involved.) 
+The same Docker containers are named `satcomp-painless`.
+ <!-- can be used for the parallel (first instance) and cloud track. (In `run_solver.sh` the solver is configured differently based on the number of nodes involved.)  -->
 
-<hr/>
-<hr/>
+___
+___
 
 # SAT-Comp and SMT-Comp Parallel and Cloud Track Instructions
 
