@@ -12,7 +12,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger("Quickstart Run")
 logger.setLevel(logging.INFO)
 
-WORKER_NODES = 9
+WORKER_NODES = 0
 
 class STS: 
     def __init__(self, sts_client) -> None:
@@ -29,7 +29,7 @@ class STS:
 def argument_parser(): 
     parser = argparse.ArgumentParser()
     parser.add_argument('--profile', required = False, help = "AWS profile")
-    parser.add_argument('--project', required = False, default = 'comp24', help = "ADVANCED USERS ONLY: Name of the project (default: 'comp24').")
+    parser.add_argument('--project', required = False, default = 'comp25', help = "ADVANCED USERS ONLY: Name of the project (default: 'comp25').")
     parser.add_argument('--keep-alive', required = False, help = "If True, then cluster is not destroyed after solving.")
     parser.add_argument('--s3-locations-file', required = False, help = "Path to file containing S3 URLs for problem location of the form: s3://BUCKET_NAME/OBJECT_LOCATION.  Default is to run test.cnf from the default bucket.  You can specify multiple URLs (space separated)")
     return parser

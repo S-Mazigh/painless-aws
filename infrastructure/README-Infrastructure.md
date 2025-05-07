@@ -73,7 +73,7 @@ This command creates an AWS session, builds Mallob (if not already built), and u
 ./quickstart-build
 ```
 
-This command will require 10-20 minutes to run.  Once it is complete, Mallob should be ready to run, and the infrastructure should be set up to run a cloud solver.
+This command will require 10-20 minutes to run.  Once it is complete, Mallob should be ready to run, and the infrastructure should be set up to run a parallel solver.
 
 ### Quickstart Run
 
@@ -142,7 +142,7 @@ See the [Solver Development README](../docker/README-Solver-Development.md) in t
 
 Amazon stores your solver images in the [Elastic Container Registry (ECR)](https://console.aws.amazon.com/ecr).
 
-The `create-solver-infrastructure` command described earlier creates an ECR repository with the same name as the project (`comp24` is the default).
+The `create-solver-infrastructure` command described earlier creates an ECR repository with the same name as the project (`comp25` is the default).
 
 This repository will store the images for the leader and worker.  Once you have created and tested a docker image (or images, for the cloud leader and worker) as described in the [Solver Development README](../docker/README-Solver-Development.md), you can upload them to your AWS account with the `ecr-push` script:
 
@@ -160,24 +160,24 @@ The leader and worker tags are optional; you can upload one or both docker image
 
 ## Storing Analysis Problems in the Cloud
 
-We use the AWS Simple Storage Service (S3) to store problems we want to solve.  S3 has a concept of a "bucket" which acts like a filesystem.  As part of the `create-solver-infrastructure` CloudFormation script, we have created a bucket for you where you can store files: `ACCOUNT_NUMBER-us-east-1-comp24`, and added a `test.cnf` file to this bucket for testing.  You can start with the `test.cnf` example and skip the rest of this section until you wish to add additional files or buckets for testing your solver.
+We use the AWS Simple Storage Service (S3) to store problems we want to solve.  S3 has a concept of a "bucket" which acts like a filesystem.  As part of the `create-solver-infrastructure` CloudFormation script, we have created a bucket for you where you can store files: `ACCOUNT_NUMBER-us-east-1-comp25`, and added a `test.cnf` file to this bucket for testing.  You can start with the `test.cnf` example and skip the rest of this section until you wish to add additional files or buckets for testing your solver.
 
 You can copy files to the bucket with a command similar to this one (when executed from the root directory of this repository, this re-copies the `my-problem.cnf` file to the default bucket):
 
 ```text
-aws s3 cp my-problem.cnf s3://ACCOUNT_NUMBER-us-east-1-comp24
+aws s3 cp my-problem.cnf s3://ACCOUNT_NUMBER-us-east-1-comp25
 ```
 
 When `s3 cp` is complete, you will see your file(s) in the list of objects in the bucket:
 
 ```text
-aws s3 ls s3://ACCOUNT_NUMBER-us-east-1-comp24
+aws s3 ls s3://ACCOUNT_NUMBER-us-east-1-comp25
 ```
 
 More information on creating and managing S3 buckets is found [here](https://aws.amazon.com/s3/). The S3 command line interface is described in more detail [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html).
 
 ## Running Your Solver
-After storing docker images: `comp24:leader` (and for the cloud solver: `comp24:worker`) and placing at least one query file in your S3 bucket, you are ready to run your solver. 
+After storing docker images: `comp25:leader` (and for the cloud solver: `comp25:worker`) and placing at least one query file in your S3 bucket, you are ready to run your solver. 
 
 ### Running Your Solver Using `quickstart-run`
 You can use `quickstart-run` to spin up the cluster, run several files, and then spin down the cluster with one command.  To run files other than the `test.cnf` file, you can provide a list of s3 file paths to run, one after the other.  The command usage is: 
@@ -229,8 +229,8 @@ AWS typically requires 2-5 minutes to allocate nodes and host the ECS cluster. Y
 The next page will show a list of job queues, including:
 
 ```text
-job-queue-comp24-SolverLeaderService-...
-job-queue-comp24-SolverWorkerService-...
+job-queue-comp25-SolverLeaderService-...
+job-queue-comp25-SolverWorkerService-...
 ```
 
 The service is running and available when the number of running tasks for the leader is `1` and the number of running tasks for the Worker service is `n`, as chosen with `NUM_WORKERS` in the `ecs-config` script argument.
@@ -251,7 +251,7 @@ send_message --location S3_LOCATION --workers NUM_WORKERS [--timeout TIMEOUT] [-
 ```
 
 with required arguments:
-* `S3_LOCATION` is the S3 location of the query file. For example, for the bucket we described earlier, the location would be `s3://ACCOUNT_NUMBER-us-east-1-comp24/test.cnf`.
+* `S3_LOCATION` is the S3 location of the query file. For example, for the bucket we described earlier, the location would be `s3://ACCOUNT_NUMBER-us-east-1-comp25/test.cnf`.
 * `NUM_WORKERS` is the number of worker nodes to allocate for this problem. Again, we recommend that you start with `NUM_WORKERS` as `1` when beginning. For parallel solvers, you should always set `NUM_WORKERS` to `0`.
 
 and optional arguments:
@@ -277,7 +277,7 @@ To watch the logs in real-time you can navigate to the CloudWatch console and ch
 ![](readme-images/cloudwatch-menu.png)
 _Figure 2: CloudWatch log groups menu_
 
-After choosing the log groups menu item, you should see logs related to `/ecs/comp24-leader` and `/ecs/comp24-worker` as shown in Figure 3.  
+After choosing the log groups menu item, you should see logs related to `/ecs/comp25-leader` and `/ecs/comp25-worker` as shown in Figure 3.  
 
 ![](readme-images/cloudwatch-log-groups.png)
 _Figure 3: CloudWatch log groups view_
@@ -296,7 +296,7 @@ AWS provides a very full-featured log query language called [CloudWatch Logs Ins
 
 #### S3 Storage of Intermediate Files
 
-When the solver is invoked we store the `input.json` file and the analysis problem in a temporary directory that is passed as the argument to the solver.  We recommend that you use the same directory (or create a subdirectory) for storing all of the intermediate files used during solving.  At the conclusion of solving, all contents in this directory _for the leader solver_ will be uploaded to your S3 bucket (`ACCOUNT_NUMBER-us-east-1-comp24`) under a `/tmp/UUID` directory with a unique UUID so that you can inspect them offline.  This way, you can instrument your solvers to write to the filesystem for later analysis.  
+When the solver is invoked we store the `input.json` file and the analysis problem in a temporary directory that is passed as the argument to the solver.  We recommend that you use the same directory (or create a subdirectory) for storing all of the intermediate files used during solving.  At the conclusion of solving, all contents in this directory _for the leader solver_ will be uploaded to your S3 bucket (`ACCOUNT_NUMBER-us-east-1-comp25`) under a `/tmp/UUID` directory with a unique UUID so that you can inspect them offline.  This way, you can instrument your solvers to write to the filesystem for later analysis.  
 
 > [!NOTE]
 > Currently this is only available for the leader solver. In the future, we may add the capability to upload data from the workers depending on competitor feedback.  If you store the stdout and stderr logs to this directory (as the Mallob example does), then the output message produced by the solver will identify the UUID used for the bucket for easy reference.
@@ -402,7 +402,7 @@ __Step 1:__  Update the size of the EC2 cluster using the EC2 console
 
 To control the instances in your cluster, go to the EC2 console and scroll down on the left side of the console and click on the link that says "Auto Scaling Groups".
 
-In the next page, you will see an autoscaling group called something like `job-queue-comp24-EcsInstance`.
+In the next page, you will see an autoscaling group called something like `job-queue-comp25-EcsInstance`.
 
 1. Select the queue by clicking on it, then click the "Edit" button in the "Group details" section.
 1. Set the desired, and maximum task capacity to n (where n includes 1 leader and n-1 workers, so there is a minimum useful size of 2), and click "Update".
@@ -414,8 +414,8 @@ Navigate to the ECS console, then select the SatCompCluster link.
 The next page should show a list of job queues, including:
 
 ```text
-job-queue-comp24-SolverLeaderService-...
-job-queue-comp24-SolverworkerService-...
+job-queue-comp25-SolverLeaderService-...
+job-queue-comp25-SolverworkerService-...
 ```
 
 Click on the SolverLeaderService job queue and choose "Update".  Set the number of tasks to 1, then choose "Skip to review", then click "Update Service".  You should then navigate back to the SatCompCluster link and click on the SolverWorkerService link.  Choose "Update" and set the number of tasks to n-1, where 'n' is the number of EC2 nodes you created in Setup Step 1.
@@ -436,7 +436,7 @@ You incur costs for the time the cluster is running.
 
 To control the instances in your cluster, go to the EC2 console and scroll down on the left side of the console and click on the link that says "Auto Scaling Groups".
  
-In the next page, you will see an autoscaling group called something like job-queue-comp24-EcsInstance.
+In the next page, you will see an autoscaling group called something like job-queue-comp25-EcsInstance.
  
 1. Select the queue by clicking on it, then click the "Edit" button in the "Group details" section.
 1. Set the desired and maximum task capacity to 0.  This shuts down any EC2 instances.
@@ -476,10 +476,10 @@ For example, for the bucket we described earlier, given a cluster with two nodes
 
 #### Q: What if I want to create different buckets other than the one provided for storing problems in?
 
-In case you wish to create a different bucket, here is a command to create a bucket named `comp24-satcomp-examples`:
+In case you wish to create a different bucket, here is a command to create a bucket named `comp25-satcomp-examples`:
 
 ```text
-aws s3api create-bucket --bucket comp24-satcomp-examples
+aws s3api create-bucket --bucket comp25-satcomp-examples
 ```
 
 Please note:
@@ -494,7 +494,7 @@ Please note:
 
 Amazon stores your solver images in the [Elastic Container Registry (ECR)](https://console.aws.amazon.com/ecr).
 
-The `create-solver-infrastructure` command described earlier creates an ECR repository named `comp24`.
+The `create-solver-infrastructure` command described earlier creates an ECR repository named `comp25`.
 
 
 This repository store the images for the leader and worker.  
@@ -503,7 +503,7 @@ The repository has an associated URI (shown on the console page), which is what 
 The format for URIs is
 
 ```text
-ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp24
+ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp25
 ```
 
 You will use these URIs to describe where to store our Docker images in AWS.  
@@ -520,18 +520,18 @@ aws ecr get-login-password --region us-east-1 | docker login --username AWS --pa
 Next, you need to tag the image to match the ECR repository.  For the worker, tag the image as:
 
 ```text
-docker tag [LOCAL_WORKER_IMAGE_ID] [AWS_ACCOUNT_NUMBER].dkr.ecr.us-east-1.amazonaws.com/comp24:worker
+docker tag [LOCAL_WORKER_IMAGE_ID] [AWS_ACCOUNT_NUMBER].dkr.ecr.us-east-1.amazonaws.com/comp25:worker
 ```
 
 where 
 
-* **LOCAL\_WORKER\_IMAGE\_ID** is the local worker image tag (e.g., `comp24:worker`).  
+* **LOCAL\_WORKER\_IMAGE\_ID** is the local worker image tag (e.g., `comp25:worker`).  
 * **AWS\_ACCOUNT\_ID** is the account ID where you want to store the image.
 
 For the leader, tag the image as:
 
 ```text
-docker tag LOCAL_LEADER_IMAGE_ID ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp24:leader
+docker tag LOCAL_LEADER_IMAGE_ID ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp25:leader
 ```
 
 where 
@@ -541,8 +541,8 @@ where
 After these steps, you can docker push the images:
 
 ```text
-docker push ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp24:leader
-docker push ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp24:worker
+docker push ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp25:leader
+docker push ACCOUNT_NUMBER.dkr.ecr.us-east-1.amazonaws.com/comp25:worker
 ```
 
 You should see network progress bars for both images.

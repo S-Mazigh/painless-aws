@@ -129,6 +129,7 @@ class SqsService:
                 QueueUrl = queue, 
                 WaitTimeSeconds = QUEUE_WAIT_TIME
             )
+            print(str(response))
             if response["Messages"]:
                 for msg in response["Messages"]:
                     body = msg["Body"]
@@ -169,4 +170,5 @@ if __name__ == "__main__":
             sqs.receive_and_delete_message(args.timeout)
     except Exception as e:
         logger.info(f"Failed to send message. {e}")
+        raise e
         
