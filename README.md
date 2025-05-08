@@ -1,14 +1,3 @@
-## Painless Submission 2024
-
-This branch contains the default files for the SAT Competition 2024 Painless submission. See:
-
-    docker/painless-images/{common,leader,worker}/*
-
-The same Docker containers named `satcomp-painless`, can be used for the parallel track (branch `parallel-24-1`) and the cloud track (branch `cloud-24`). In `run_solver.sh` the solver is configured differently based on the number of nodes involved. 
-
-<hr/>
-<hr/>
-
 # SAT-Comp and SMT-Comp Parallel and Cloud Track Instructions
 
 Welcome to [SAT-comp](https://satcompetition.github.io/2024/) and [SMT-Comp 2024](https://smt-comp.github.io/2024/)!

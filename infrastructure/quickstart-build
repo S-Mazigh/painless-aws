@@ -13,7 +13,7 @@ logger.setLevel(logging.INFO)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--profile', required = False, help = "AWS profile")
-    parser.add_argument('--project', required = False, default = 'comp25', help = "ADVANCED USERS ONLY: Name of the project (default: 'comp25').")
+    parser.add_argument('--project', required = False, default = 'comp24', help = "ADVANCED USERS ONLY: Name of the project (default: 'comp24').")
     args = parser.parse_args()
 
     profile_args = ['--profile', args.profile] if args.profile else []
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         logger.error("Unable to create solver infrastructure...has it already been created?")
         logger.error("If not, have you set up the default profile in your ~/.aws/config file?")
         logger.error("If so, does your project name meet the expected format?")
-        # exit(-1)
+        exit(-1)
 
     logger.info("Building the Docker images for the competition base containers")
     cmd = ['cd ../docker/satcomp-images && ./build_satcomp_images.sh && cd ../../infrastructure']
@@ -65,15 +65,15 @@ if __name__ == "__main__":
            '--leader', 'satcomp-painless:leader', \
            '--worker', 'satcomp-painless:worker'] \
            + profile_args + project_args
-    logger.info("Uploading the Painless Docker files to ECR.")
+    logger.info("Uploading the painless Docker files to ECR.")
     logger.info("This operation will likely take 2-5 minutes, depending on network bandwidth.")
     try:
         result = subprocess.run(cmd)
     except Exception as e:
-        logger.error(f"Unexpected error {e}: Unable to upload Mallob docker images to ECR.")
+        logger.error(f"Unexpected error {e}: Unable to upload painless docker images to ECR.")
         exit(-1)
     if result.returncode:
-        logger.error(f"Unexpected error (return code {result}).  Unable to upload Mallob docker images to ECR")
+        logger.error(f"Unexpected error (return code {result}).  Unable to upload painless docker images to ECR")
         exit(-1)
 
     logger.info("Upload complete; quickstart-build successful!")
