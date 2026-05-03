@@ -23,7 +23,6 @@ test_formulas/cnf/sat_*.cnf
 test_formulas/cnf/unsat_*.cnf
 test_formulas/cnf/malformed_*.cnf
 
-
 results
 test-results
 

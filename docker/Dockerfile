@@ -12,11 +12,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 RUN apt-get --install-recommends install -y libboost-all-dev g++
 # RUN ln -sf /usr/bin/g++-10 /usr/bin/g++
 #--tag satcomp-26
-RUN git clone https://github.com/s-mazigh/painless.git
+RUN git clone https://github.com/lip6/painless.git --branch isc26-alpha
 
 # Build Painless
 WORKDIR /painless
-RUN git checkout v1.27.0-isc26
 RUN make USE_DIST=0 -j $(nproc)
 #####
 
