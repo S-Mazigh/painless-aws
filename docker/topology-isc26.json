@@ -1,0 +1,713 @@
+{
+  "databaseTemplates": [
+    {
+      "id": "solver_db",
+      "type": "persize",
+      "capacity": 10000,
+      "params": {
+        "max-clause-size": 80
+      }
+    },
+    {
+      "id": "shr_d",
+      "type": "persize",
+      "capacity": 100000,
+      "params": {
+        "max-clause-size": 50
+      }
+    }
+  ],
+  "cdclSolvers": [
+    {
+      "id": "Kissat0",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 0,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 0,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 6
+      }
+    },
+    {
+      "id": "Kissat1",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 1,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 1,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 6
+      }
+    },
+    {
+      "id": "Kissat2",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 2,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 2,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 6
+      }
+    },
+    {
+      "id": "Kissat3",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 3,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 3,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 5
+      }
+    },
+    {
+      "id": "Kissat4",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 4,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 4,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 7
+      }
+    },
+    {
+      "id": "Kissat5",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 5,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 5,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 6
+      }
+    },
+    {
+      "id": "Kissat6",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 6,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 6,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 5
+      }
+    },
+    {
+      "id": "Kissat7",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 7,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 7,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 5
+      }
+    },
+    {
+      "id": "Kissat8",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 8,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 8,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 6
+      }
+    },
+    {
+      "id": "Kissat9",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 9,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 9,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 5
+      }
+    },
+    {
+      "id": "Kissat10",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 10,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 10,
+        "stable": 0,
+        "walkinitially": 0,
+        "chrono": 0,
+        "tier2": 5
+      }
+    },
+    {
+      "id": "Kissat11",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 11,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 61,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 31,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat12",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 12,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 62,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 66,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat13",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 13,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 63,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 77,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat14",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 14,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 64,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 20,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat15",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 15,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 65,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 68,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat16",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 16,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 66,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 100,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat17",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 17,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 67,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 93,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat18",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 18,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 68,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 22,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat19",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 19,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 69,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 44,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat20",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 20,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 70,
+        "target": 2,
+        "stable": 2,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 34,
+        "tier2": 3,
+        "tier1": 1
+      }
+    },
+    {
+      "id": "Kissat21",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 21,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 22,
+        "walkinitially": 0,
+        "chrono": 0,
+        "chronolevels": 197
+      }
+    },
+    {
+      "id": "Kissat22",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 22,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 12,
+        "walkinitially": 1,
+        "chrono": 0,
+        "chronolevels": 161
+      }
+    },
+    {
+      "id": "Kissat23",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 23,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 32,
+        "walkinitially": 0,
+        "chrono": 0,
+        "chronolevels": 179
+      }
+    },
+    {
+      "id": "Kissat24",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 24,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 39,
+        "walkinitially": 1,
+        "chrono": 0,
+        "chronolevels": 154
+      }
+    },
+    {
+      "id": "Kissat25",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 25,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 23,
+        "walkinitially": 1,
+        "chrono": 0,
+        "chronolevels": 100
+      }
+    },
+    {
+      "id": "Kissat26",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 26,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 30,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 101
+      }
+    },
+    {
+      "id": "Kissat27",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 27,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 28,
+        "walkinitially": 0,
+        "chrono": 1,
+        "chronolevels": 176
+      }
+    },
+    {
+      "id": "Kissat28",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 28,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 40,
+        "walkinitially": 1,
+        "chrono": 0,
+        "chronolevels": 153
+      }
+    },
+    {
+      "id": "Kissat29",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 29,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 1,
+        "restartint": 37,
+        "walkinitially": 1,
+        "chrono": 1,
+        "chronolevels": 103
+      }
+    },
+    {
+      "id": "Kissat30",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 30,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 29,
+        "walkinitially": 1,
+        "chrono": 0,
+        "chronolevels": 144
+      }
+    },
+    {
+      "id": "Kissat31",
+      "type": "Kissat",
+      "importDB": "solver_db",
+      "params": {
+        "seed": 31,
+        "preprocess": 1,
+        "eliminate": 0,
+        "factor": 0,
+        "phase": 0,
+        "restartint": 34,
+        "walkinitially": 0,
+        "chrono": 1,
+        "chronolevels": 103
+      }
+    }
+  ],
+  "localSearchers": [],
+  "workingStrategy": {
+    "name": "PortfolioSimple",
+    "solvers": [
+      "Kissat0",
+      "Kissat1",
+      "Kissat2",
+      "Kissat3",
+      "Kissat4",
+      "Kissat5",
+      "Kissat6",
+      "Kissat7",
+      "Kissat8",
+      "Kissat9",
+      "Kissat10",
+      "Kissat11",
+      "Kissat12",
+      "Kissat13",
+      "Kissat14",
+      "Kissat15",
+      "Kissat16",
+      "Kissat17",
+      "Kissat18",
+      "Kissat19",
+      "Kissat20",
+      "Kissat21",
+      "Kissat22",
+      "Kissat23",
+      "Kissat24",
+      "Kissat25",
+      "Kissat26",
+      "Kissat27",
+      "Kissat28",
+      "Kissat29",
+      "Kissat30",
+      "Kissat31"
+    ],
+    "params": {}
+  },
+  "sharingStrategies": [
+    {
+      "id": "horde_main",
+      "name": "HordeSat",
+      "producers": [
+        "Kissat0",
+        "Kissat1",
+        "Kissat2",
+        "Kissat3",
+        "Kissat4",
+        "Kissat5",
+        "Kissat6",
+        "Kissat7",
+        "Kissat8",
+        "Kissat9",
+        "Kissat10",
+        "Kissat11",
+        "Kissat12",
+        "Kissat13",
+        "Kissat14",
+        "Kissat15",
+        "Kissat16",
+        "Kissat17",
+        "Kissat18",
+        "Kissat19",
+        "Kissat20",
+        "Kissat21",
+        "Kissat22",
+        "Kissat23",
+        "Kissat24",
+        "Kissat25",
+        "Kissat26",
+        "Kissat27",
+        "Kissat28",
+        "Kissat29",
+        "Kissat30",
+        "Kissat31"
+      ],
+      "clients": [
+        "Kissat0",
+        "Kissat1",
+        "Kissat2",
+        "Kissat3",
+        "Kissat4",
+        "Kissat5",
+        "Kissat6",
+        "Kissat7",
+        "Kissat8",
+        "Kissat9",
+        "Kissat10",
+        "Kissat11",
+        "Kissat12",
+        "Kissat13",
+        "Kissat14",
+        "Kissat15",
+        "Kissat16",
+        "Kissat17",
+        "Kissat18",
+        "Kissat19",
+        "Kissat20",
+        "Kissat21",
+        "Kissat22",
+        "Kissat23",
+        "Kissat24",
+        "Kissat25",
+        "Kissat26",
+        "Kissat27",
+        "Kissat28",
+        "Kissat29",
+        "Kissat30",
+        "Kissat31"
+      ],
+      "db": "shr_d",
+      "params": {
+        "sleep-time-us": 500000,
+        "literals-per-producer-per-round": 1500,
+        "initial-lbd-limit": 2,
+        "rounds-before-increase": 1
+      }
+    }
+  ],
+  "sharers": [
+    {
+      "id": "sharer_main",
+      "strategies": [
+        "horde_main"
+      ]
+    }
+  ]
+}

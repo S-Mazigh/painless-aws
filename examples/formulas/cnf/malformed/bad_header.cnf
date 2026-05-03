@@ -1,0 +1,4 @@
+This is not a CNF file at all.
+It contains no valid DIMACS header or clauses.
+Just plain English text that no SAT solver should accept.
+%^&*@#! random garbage

@@ -1,127 +1,99 @@
-## Painless Submission 2024
+# SAT/SMT Competition Infrastructure (Painless Parallel Config)
 
-This branch contains the default files for the SAT Competition 2024 Painless submission. See:
+Welcome to the 2026 [SAT](https://satcompetition.github.io/) and [SMT](https://smt-comp.github.io/2026/) solver competitions. AWS is happy to again sponsor the parallel and distributed tracks. The competition infrastructure has been rewritten for this year. 
 
-    docker/painless-images/{common,leader,worker}/*
+Our primary goal in rewriting this package was to make it easier for you, the solver research community, to prepare your solvers for entry in the competitions. That process is much simpler now; you need to submit only two files: a Dockerfile to build your solver, and a small Python shim to connect your solver inputs and outputs to data structures used by the package.
 
-The same Docker containers named `satcomp-painless`, can be used for the parallel track (branch `parallel-24-1`) and the cloud track (branch `cloud-24`). In `run_solver.sh` the solver is configured differently based on the number of nodes involved. 
+This package enables you to package, build, and test solvers on a local machine. A single script serves as the entrypoint to preparing and running solvers. The package supports running solvers in parallel or distributed mode. Functionality is included to qualify your solver before submission. 
 
-<hr/>
-<hr/>
+The competition will take place on exactly the same package. This should minimize incompatibility experienced previously between the mock infrastructure used to prepare solvers and the infrastructure used to run the competition.
 
-# SAT-Comp and SMT-Comp Parallel and Cloud Track Instructions
+The package contains lots of examples, including many solvers from previous competitions. This should be an effective starting point: ideally, you will not have to go deep into the detailed documentation.
 
-Welcome to [SAT-comp](https://satcompetition.github.io/2024/) and [SMT-Comp 2024](https://smt-comp.github.io/2024/)!
+We hope you find this package useful. This is not production software, and we expect that issues will surface as we all prepare for the competitions. Reach out to us if you have questions. 
 
-This repository will help you get your parallel or distributed solver running on AWS. You will first build docker containers with your solver and then connect them to the AWS infrastructure.
+Finally, a reminder that your AWS account is charged for the AWS resources you consume. We intend that this package will help you manage those resources. However, you are responsible for resources consumed by your account, and we strongly suggest manually checking for any remaining resources when your work is complete.
 
-We recommend that you work in four steps:
+## Documentation Overview
 
-1. Create and configure an AWS Account for the competition (instructions below).  Please do this right away and send us an email, so we can start the process to give you AWS credits.  You can then continue with step 2 while waiting for us to answer. 
-2. Build your solver as a Docker image and run experiments locally. See the [Solver Development README](docker/README-Solver-Development.md).
-3. Set up AWS infrastructure and test your solver on the cloud. See the [Infrastructure README](infrastructure/README-Infrastructure.md)
-4. When ready, email us with a link to your solver repository.
+We have organized the documentation around three activies:
 
-## Creating an AWS Account
+1. [Getting Started](/docs/getting-started/README.md). In this step, you will install software dependencies and get your AWS account and permissions set up.
+1. [Solver Preparation](/docs/solver-preparation/README.md). You will prepare your solver by packaging it in Docker and providing a shim between the package and your solvers input/output. You will configure a project YAML that provides information about how and where to run your solver. A jobs YAML will be used to organize job submission. Local testing functionality enables you to debug your solver packaging before deploying to AWS. A dedicated section covers the extra requirements for distributed solvers. Finally, a troubleshooting section should help if you experience issues.
+1. [Running on AWS](/docs/running-on-AWS/README.md). The final activity will deploy your packaged solver to AWS. You will start tasks that run your solver in Docker containers. You will submit jobs and collect results.
 
-First, create a specific AWS account for competition use. You can use the same account used in previous years. If you have not created an AWS account previously, it is straightforward to do, requiring a cell phone number, credit card, and address. Make sure to register your account with an institutional email address (and not a private one), otherwise AWS cannot sponsor your account. To create an account, navigate to [aws.amazon.com](https://aws.amazon.com) and follow the instructions.
-
-If you have previously created an AWS account for other purposes, we strongly advise that you create a separate AWS account for managing your SAT/SMTComp tool construction and testing. This makes it much easier for us to manage account credits and billing. Once the new account is created, email us the account number at: sat-comp@amazon.com (for SAT-Comp) or aws-smtcomp-2024@googlegroups.com (for SMT-Comp) and we will apply the appropriate credits to your account.
-
-To find your account ID, click on your account name in the top right corner, and then click "My Account". You should see Account ID in the Account Settings
-
-It is important that you tell us your account number immediately after creating the account, so that we can request AWS credit for your experiments. Once we hear from you, we will acknowledge your email and submit an internal request for your account. We will email again when the credit has been added to your account.
-
-## Building Your Solver
-
-Next, it is time to develop your solver!  All of the development and most of the testing can be performed on a local laptop, so it is not necessary to wait for AWS credits to get started.  Please see the instructions in the [Solver Development README](docker/README-Solver-Development.md) on how to start building and testing your solver.
-
-## For Returning Competitors
-You should find the developer experience similar to 2023. We will note any changes here.
-
-## Problems from Previous Competitions
-
-You can find SAT problems from recent competitions here:
-- [2020](https://satcompetition.github.io/2020/downloads.html)
-- [2021](https://satcompetition.github.io/2021/downloads.html)
-- [2022](https://satcompetition.github.io/2022/downloads.html)
-- [2023](https://satcompetition.github.io/2023/downloads.html)
-    
-You can find SMT problems from recent competitions here:
-- [2020](https://smt-comp.github.io/2020/benchmarks.html)
-- [2021](https://smt-comp.github.io/2021/benchmarks.html)
-- [2022](https://smt-comp.github.io/2022/benchmarks.html)
-- [2023](https://smt-comp.github.io/2023/benchmarks.html)
-
-## Solver Entrants from Previous Competitions
-
-Here are the github repositories for some previous solver entrants. You may find these helpful.
-
-### 2023
-
-#### SAT-Comp Parallel 
-* [DPS](https://github.com/nabesima/DPS-satcomp2023)
-* [Gimsatul](https://github.com/arminbiere/gimsatul/tree/master/aws/sc2023)
-* [Mallob-1](https://github.com/domschrei/aws-batch-comp-infrastructure-sample/tree/mallob23-parallel-1)
-* [Mallob-2](https://github.com/domschrei/aws-batch-comp-infrastructure-sample/tree/mallob23-parallel-2)
-* [Mallob-lin](https://github.com/solimul/mallob-lin)
-* [MergeSAT](https://github.com/conp-solutions/mergesat/tree/master/tools/aws_docker)
-* [MergeSAT-Pcasso](https://github.com/conp-solutions/mergesat/tree/v4.0-rc4-pcasso)
-* [NPS](https://github.com/nabesima/DPS-satcomp2023/tree/non-det)
-* [Pahkis23](https://github.com/KTRDeveloper/Pahkis23)
-* [PakisInc23](https://github.com/KTRDeveloper/PakisInc23)
-* [pDisKS-step](https://github.com/sat-team-2023/pKisDS)  (dead link)
-* [pKisDS](https://github.com/sat-team-2023/pKisDS)  (dead link)
-* [PKISSAT-RS-2G](https://github.com/vvallade/painless-sat-competition-2023/tree/main)
-* [PKISSAT-RS-STR](https://github.com/vvallade/painless-sat-competition-2023/tree/str)
-* [PRS-sc23](https://github.com/shaowei-cai-group/PRS-sc23/tree/PRS-sc23)
-* [PRS-nopre-sc23](https://github.com/shaowei-cai-group/PRS-sc23/tree/PRS-nopre-sc23)
-
-#### SAT-Comp Cloud
-* [Mallob](https://github.com/domschrei/aws-batch-comp-infrastructure-sample/tree/mallob23-cloud)
-* [Mallob-lin](https://github.com/solimul/mallob-lin)
-* [PRS-distributed-sc23](https://github.com/shaowei-cai-group/PRS-sc23/tree/PRS-distributed-sc23)
+In addition to the activity-based documentation, there is a system, developer, and testing overview in [Architecture](/docs/architecture/README.md).
 
 
-#### SMT-Comp Parallel
-* [Vampire-parallel](https://github.com/vprover/vampire/tree/smtcomp23/dockers)
-* [z3-owl](https://github.com/ZJU-Automated-Reasoning-Group/arlib)
+## Workflow Overview
 
-#### SMT-Comp Cloud
-* [cvc5-cloud](https://github.com/amaleewilson/smtcomp23)
-* [Vampire-cloud](https://github.com/vprover/vampire/tree/smtcomp23/dockers)
+### Setup
+
+Set up your AWS account and configure your permissions. Install the package dependencies.
+
+Activate the Python virtual environment, set environment variables, and check dependency versions. Note that this adds the repository root directory to $PATH:
+
+```bash
+source satcomp-activate.sh    # Prompt changes to (venv-satcomp)
+satcomp.py -h                 # View help - works from any directory
+```
+
+### Solver Packaging
+
+After sourcing the venv, you can run satcomp.py commands from any directory. We suggest using a directory outside of the package:
+
+AWS setup:
+```bash
+satcomp.py bootstrap        # AWS setup
+```
+
+First time, and after creating your `Dockerfile`, `solver_cmd.py`, and `config.yml`:
+```bash
+satcomp.py build            # Build Docker images locally
+```
+
+Test locally:
+```bash
+satcomp.py build                              # build Docker images locally
+satcomp.py config.yml test-local              # test all solvers in config in local docker containers
+satcomp.py config.yml test-local mysolver     # test specific solver in local docker container
+satcomp.py test                               # test against submission requirements in local 
+```       
+
+### Running on AWS
+
+Push to AWS
+```bash
+satcomp.py build            # build Docker images locally (if needed)
+satcomp.py push             # build Docker images
+```
+
+Starting containers, running tests, stopping containers:
+```bash
+satcomp.py start-instances [n]        # start n instances for each solver (activate compute, can take 15 minutes)
+satcomp.py submit                     # Submit the jobs referenced in jobs.yml
+satcomp.py terminate-instances        # terminate solvers (when input queues are empty)
+satcomp.py collect                    # read solver output from AWS output queues and copy into local results
+```
+
+Cleaning up when complete:
+```bash
+satcomp.py teardown all      # delete AWS resources
+```
+
+### Next Step
+
+It's time to [Get Started](/docs/getting-started/README.md)! In this step, you will install software dependencies and get your AWS account and permissions set up.
 
 
-### 2022
+## Getting Help
 
-#### SAT-Comp Parallel
-* [DPS-Kissat](https://github.com/nabesima/DPS-satcomp2022)
-* [gimsatul](https://github.com/arminbiere/gimsatul)
-* [Mallob-ki](https://github.com/domschrei/isc22-mallob/tree/ki)
-* [NPS-Kissat](https://github.com/nabesima/DPS-satcomp2022/tree/non-det)
-* [P-Kissat](https://github.com/vvallade/painless-sat-competition-2022/tree/pkissat)
-* [P-MCOMSPS](https://github.com/vvallade/painless-sat-competition-2022)
-* [ParKissat-RS](https://github.com/mww-aws/ParKissat/tree/RS)
-* [PaKis22](https://github.com/KTRDeveloper/PaKis22)
-* [PaKisMAB22](https://github.com/KTRDeveloper/PaKisMAB22)
+If you run into issues not covered by the documentation, contact us: [solver-competitions@amazon.com](mailto:solver-competitions@amazon.com)]
 
-#### SAT-Comp Cloud
-* [Mallob-kicaliglu](https://github.com/domschrei/isc22-mallob/tree/kicaliglu)
-* [Paracooba](https://github.com/maximaximal/paracooba-satcomp22)
+## Submitting Your Solver (Competitors)
 
-#### SMT-Comp Parallel
-* [SMTS Cube and Conquer](https://github.com/usi-verification-and-security/aws-smts/tree/parallel-cube-and-conquer-fixed)
-* [SMTS Portfolio](https://github.com/usi-verification-and-security/aws-smts/tree/parallel-portfolio)
-* [Vampire](https://github.com/vprover/vampire/tree/smtcomp22)
+Ensure that your solver passes the submission tests.
 
-#### SMT-Comp Cloud
-* [cvc5-cloud](https://github.com/amaleewilson/aws-satcomp-solver-sample/tree/cvc5)
-* [SMTS Cube and Conquer](https://github.com/usi-verification-and-security/aws-smts/tree/cloud-cube-and-conquer-fixed)
-* [SMTS Portfolio](https://github.com/usi-verification-and-security/aws-smts/tree/cloud-portfolio)
-* [Vampire](https://github.com/vprover/vampire/tree/smtcomp22)
-
-## FAQ
-
-#### Q. I already created my AWS account with a non-institutional email address. Can I change the email address tied to my account?
-
-Yes. To change your email address, follow the instructions at https://repost.aws/knowledge-center/change-email-address.
+Send us a repository link that contains your Dockerfile and `solver_cmd.py` files.
+We will clone those, along with the solver code (and any other code) that your build downloads.
+Note that everything must be built from source to meet the open-source requirement of the competition and for security reasons.

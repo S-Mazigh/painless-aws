@@ -1,0 +1,19 @@
+# SAT parallel solver configuration
+# Parallel solvers from SAT Competition 2025 on m6i.4xlarge instances
+
+project: painless-parallel
+profile: default
+region: us-east-1
+solver_type: sat
+
+global_solver_options:
+  is_distributed: false
+  num_worker_nodes_per_leader: 0
+  ec2_instance_type: m6i.16xlarge
+  disk_size: 32
+
+solvers:
+  - name: painless
+    author: painless-team
+    docker_dir: $SATCOMP_ROOT/docker
+    dockerfile: Dockerfile
