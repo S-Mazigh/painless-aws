@@ -25,11 +25,11 @@
       "params": {
         "seed": 0,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 0,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 6
@@ -42,11 +42,11 @@
       "params": {
         "seed": 1,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 1,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 6
@@ -59,11 +59,11 @@
       "params": {
         "seed": 2,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 2,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 6
@@ -76,11 +76,11 @@
       "params": {
         "seed": 3,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 3,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 5
@@ -93,11 +93,11 @@
       "params": {
         "seed": 4,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 4,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 7
@@ -110,11 +110,11 @@
       "params": {
         "seed": 5,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 5,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 6
@@ -127,11 +127,11 @@
       "params": {
         "seed": 6,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 6,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 5
@@ -144,11 +144,11 @@
       "params": {
         "seed": 7,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 7,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 5
@@ -161,11 +161,11 @@
       "params": {
         "seed": 8,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 8,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 6
@@ -178,11 +178,11 @@
       "params": {
         "seed": 9,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 9,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 5
@@ -195,11 +195,11 @@
       "params": {
         "seed": 10,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 10,
         "stable": 0,
+        "reorderusetrail": 1,
         "walkinitially": 0,
         "chrono": 0,
         "tier2": 5
@@ -212,12 +212,11 @@
       "params": {
         "seed": 11,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 61,
         "target": 2,
         "stable": 2,
+        "reordercond": 1,
         "walkinitially": 1,
         "chrono": 1,
         "chronolevels": 31,
@@ -232,12 +231,11 @@
       "params": {
         "seed": 12,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
-        "restartint": 62,
         "target": 2,
         "stable": 2,
+        "reordercond": 1,
         "walkinitially": 1,
         "chrono": 1,
         "chronolevels": 66,
@@ -252,12 +250,11 @@
       "params": {
         "seed": 13,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 63,
         "target": 2,
         "stable": 2,
+        "reordercond": 1,
         "walkinitially": 1,
         "chrono": 1,
         "chronolevels": 77,
@@ -272,12 +269,11 @@
       "params": {
         "seed": 14,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 64,
         "target": 2,
         "stable": 2,
+        "reordercond": 1,
         "walkinitially": 1,
         "chrono": 1,
         "chronolevels": 20,
@@ -292,12 +288,11 @@
       "params": {
         "seed": 15,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
-        "restartint": 65,
         "target": 2,
         "stable": 2,
+        "reordercond": 1,
         "walkinitially": 1,
         "chrono": 1,
         "chronolevels": 68,
@@ -312,10 +307,8 @@
       "params": {
         "seed": 16,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 66,
         "target": 2,
         "stable": 2,
         "walkinitially": 1,
@@ -332,10 +325,8 @@
       "params": {
         "seed": 17,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
-        "restartint": 67,
         "target": 2,
         "stable": 2,
         "walkinitially": 1,
@@ -352,10 +343,8 @@
       "params": {
         "seed": 18,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 68,
         "target": 2,
         "stable": 2,
         "walkinitially": 1,
@@ -372,10 +361,8 @@
       "params": {
         "seed": 19,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 69,
         "target": 2,
         "stable": 2,
         "walkinitially": 1,
@@ -392,10 +379,8 @@
       "params": {
         "seed": 20,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
-        "restartint": 70,
         "target": 2,
         "stable": 2,
         "walkinitially": 1,
@@ -412,7 +397,6 @@
       "params": {
         "seed": 21,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 22,
@@ -428,7 +412,6 @@
       "params": {
         "seed": 22,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 12,
@@ -444,7 +427,6 @@
       "params": {
         "seed": 23,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 32,
@@ -460,7 +442,6 @@
       "params": {
         "seed": 24,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 39,
@@ -476,7 +457,6 @@
       "params": {
         "seed": 25,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 23,
@@ -492,7 +472,6 @@
       "params": {
         "seed": 26,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 30,
@@ -508,7 +487,6 @@
       "params": {
         "seed": 27,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 28,
@@ -524,7 +502,6 @@
       "params": {
         "seed": 28,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 40,
@@ -540,7 +517,6 @@
       "params": {
         "seed": 29,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 1,
         "restartint": 37,
@@ -556,7 +532,6 @@
       "params": {
         "seed": 30,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 29,
@@ -572,7 +547,6 @@
       "params": {
         "seed": 31,
         "preprocess": 1,
-        "eliminate": 0,
         "factor": 0,
         "phase": 0,
         "restartint": 34,
@@ -695,7 +669,7 @@
       ],
       "db": "shr_d",
       "params": {
-        "sleep-time-us": 500000,
+        "sleep-time-us": 100000,
         "literals-per-producer-per-round": 1500,
         "initial-lbd-limit": 2,
         "rounds-before-increase": 1
